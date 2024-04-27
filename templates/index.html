@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KnoWeather</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body style="background-color: #17a2b8">
+  <div class="main-container">
+    <div class="heading-container">
+      <h1 class="heading">KnoWeather</h1>
+    </div>
+    <div id="weather-container">
+      <form id="weather-form" action="/" method="POST">
+        <label for="cityName">City:</label>
+        <input type="text" id="cityName" name="cityName" placeholder="City" required/>
+        <label for="stateName">State:</label>
+        <input type="text" id="stateName" name="stateName" placeholder="State" required>
+        <label for="countryName">Country:</label>
+        <input type="text" id="countryName" name="countryName" placeholder="Country" required>
+        <button id="get-weather">Get Weather</button>
+      </form>
+      <div class = "final-data">
+        {% if weather_data %}
+          <h1 id="city-name">{{ weather_data.main }}</h1>
+          <p id="weather-description">{{ weather_data.description }}</p>
+          <p id="temperature">{{ weather_data.temperature }} °C</p>
+          <img id="weather-icon" src="https://openweathermap.org/img/wn/{{weather_data.icon}}@2x.png" alt="Weather Icon">
+        {% else %}
+          <h1 id="city-name">Fill the boxes..</h1>
+          <p id="weather-description">Loading...</p>
+          <p id="temperature">Temperature in °C</p>
+          <img id="weather-icon" src="" alt="Weather Icon">
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <!-- You can keep the script tag for potential future JavaScript functionalities -->
+  <script src="../static/js/scripts.js"></script>
+</body>
+</html>
